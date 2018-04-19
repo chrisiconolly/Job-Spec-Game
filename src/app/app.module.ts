@@ -18,7 +18,9 @@ import { TitleCardComponent } from './components/title-card/title-card.component
 import { BushComponent } from './components/bush/bush.component';
 import { DistanceComponent } from './components/distance/distance.component';
 import { ShardComponent } from './components/shard/shard.component';
-import { LondonBridgeComponent } from './components/london-bridge/london-bridge.component'
+import { LondonBridgeComponent } from './components/london-bridge/london-bridge.component';
+import { CloudComponent } from './components/cloud/cloud.component';
+import { FloatingTextComponent } from './components/floating-text/floating-text.component'
 
 
 @NgModule({
@@ -30,7 +32,9 @@ import { LondonBridgeComponent } from './components/london-bridge/london-bridge.
     BushComponent,
     DistanceComponent,
     ShardComponent,
-    LondonBridgeComponent
+    LondonBridgeComponent,
+    CloudComponent,
+    FloatingTextComponent
   ],
   imports: [
     BrowserModule

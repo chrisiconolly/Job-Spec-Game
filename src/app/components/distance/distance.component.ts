@@ -14,7 +14,7 @@ import { CharPositionOnScreenService } from '../../services/char-position-on-scr
 export class DistanceComponent implements OnInit {
 
   position = { x: -100, y: 0 };
-  speed = 100;
+  speed = 150;
   lerp;
   calculateNewPosition;
   charScreenPositionX;

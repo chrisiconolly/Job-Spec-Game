@@ -1,12 +1,12 @@
 .bush {
-  height:38px;
+  height:64px;
   position: absolute;
 }
 .bush.small {
-  width: 76px;
+  width: 128px;
   background-image: url("/assets/bush-2.svg");
 }
 .bush.large {
-  width: 152px;
+  width: 256px;
   background-image: url("/assets/bush-4.svg");
 }

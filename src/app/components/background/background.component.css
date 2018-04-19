@@ -8,12 +8,6 @@
   z-index: -1;
 }
 
-.sky {
-  width: 100%;
-  height: 100%;
-  background: #008fd5
-}
-
 .floor {
   width: 100%;
   height: 64px;
