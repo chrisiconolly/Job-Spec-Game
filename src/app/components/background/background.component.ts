@@ -13,7 +13,7 @@ import { CharPositionOnScreenService } from '../../services/char-position-on-scr
 })
 export class BackgroundComponent implements OnInit {
 
-  position = { x: 0, y: 0 };
+  position = { x: -100, y: 0 };
   speed = 200;
   lerp;
   calculateNewPosition;
@@ -28,7 +28,8 @@ export class BackgroundComponent implements OnInit {
   }
 
   moveBackgroundIfOutOfBounds = (position, speed, positionOnScreen, boundaryPercentage) => {
-    if ((speed.x > 0 && positionOnScreen > boundaryPercentage) || (speed.x < 0 && positionOnScreen < boundaryPercentage)) {
+    console.log(position.x);
+    if ((speed.x > 0 && positionOnScreen > boundaryPercentage) || (speed.x < 0 && positionOnScreen < boundaryPercentage) || (speed.x > 0 && position.x >= -100)) {
       return {x: position.x, y: position.y};
     }
     return this.calculateNewPosition(this.position, speed)

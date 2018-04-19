@@ -1,4 +1,13 @@
+@font-face {
+  font-family: SuperMario;
+  src: url(/assets/SuperMario/SuperMarioText.ttf);
+}
+
 html, body {
   max-width: 100%;
   overflow-x: hidden;
+}
+
+h1, h2, h3, h4, h5 {
+  font-family: SuperMario;
 }

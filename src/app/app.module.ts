@@ -13,14 +13,24 @@ import { CharPositionOnScreenService } from './services/char-position-on-screen/
 
 // Prototype Manipulation
 import 'rxjs/add/operator/filter'
-import 'rxjs/add/operator/map'
+import 'rxjs/add/operator/map';
+import { TitleCardComponent } from './components/title-card/title-card.component';
+import { BushComponent } from './components/bush/bush.component';
+import { DistanceComponent } from './components/distance/distance.component';
+import { ShardComponent } from './components/shard/shard.component';
+import { LondonBridgeComponent } from './components/london-bridge/london-bridge.component'
 
 
 @NgModule({
   declarations: [
     AppComponent,
     CharacterComponent,
-    BackgroundComponent
+    BackgroundComponent,
+    TitleCardComponent,
+    BushComponent,
+    DistanceComponent,
+    ShardComponent,
+    LondonBridgeComponent
   ],
   imports: [
     BrowserModule

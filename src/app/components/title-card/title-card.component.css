@@ -1,0 +1,10 @@
+.title-card{
+  width: 400px;
+  background-image: url("/assets/sign.svg");
+  color: white;
+  font-size: 0.7em;
+  width: 400px;
+  position: absolute;
+  padding: 20px;
+  background-repeat: no-repeat;
+}

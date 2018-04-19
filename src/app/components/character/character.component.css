@@ -1,7 +1,19 @@
 .character {
-  width: 100px;
-  height: 100px;
-  background-color: red;
+  width: 64px;
+  height: 64px;
+  background-image: url("/assets/woman-standing.svg");
   position: absolute;
-  border: 2px solid white;
+}
+
+.character.moving {
+  background-image: url("/assets/woman-running.svg");
+}
+
+.direction-left {
+  -moz-transform: scaleX(-1);
+    -o-transform: scaleX(-1);
+    -webkit-transform: scaleX(-1);
+    transform: scaleX(-1);
+    filter: FlipH;
+    -ms-filter: "FlipH";
 }
