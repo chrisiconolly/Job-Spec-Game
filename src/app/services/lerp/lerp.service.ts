@@ -19,5 +19,4 @@ export class LerpService { // Linear interpolation function
   calculateNewPosition = (position, speed) => {
     return {x: (position.x + speed.x), y: (position.y + speed.y)}
   }
-
 }

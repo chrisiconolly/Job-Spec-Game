@@ -8,6 +8,8 @@ import { BackgroundComponent } from './components/background/background.componen
 
 // Services
 import { LerpService } from './services/lerp/lerp.service';
+import { ScreenSizeService } from './services/screen-size/screen-size.service';
+import { CharPositionOnScreenService } from './services/char-position-on-screen/char-position-on-screen.service';
 
 // Prototype Manipulation
 import 'rxjs/add/operator/filter'
@@ -24,7 +26,9 @@ import 'rxjs/add/operator/map'
     BrowserModule
   ],
   providers: [
-    LerpService
+    LerpService,
+    ScreenSizeService,
+    CharPositionOnScreenService
   ],
   bootstrap: [AppComponent]
 })
