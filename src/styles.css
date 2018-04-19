@@ -2,12 +2,23 @@
   font-family: SuperMario;
   src: url(/assets/SuperMario/SuperMarioText.ttf);
 }
+@font-face {
+  font-family: Omnes;
+  src: url(/assets/Omnes/omnesmedium-webfont.ttf);
+}
 
 html, body {
   max-width: 100%;
   overflow-x: hidden;
+  color: white;
+  font-family: Omnes;
 }
 
 h1, h2, h3, h4, h5 {
   font-family: SuperMario;
+}
+
+p {
+  line-height: 1.2em;
+  font-size: 1.2em;
 }

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'floating-text',
@@ -7,9 +7,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FloatingTextComponent implements OnInit {
 
-  constructor() { }
+  position = {x: 0, y:64}
+
+  @Input() public left: number;
+  @Input() public top: number;
+  @Input() public text: string;
+
+  constructor() {}
 
   ngOnInit() {
+    this.position.x = this.left;
+    this.position.y = this.top;
   }
+
 
 }
