@@ -1,0 +1,24 @@
+.background {
+  position:absolute;
+  left: 0;
+  top: 0;
+  width: 2000px;
+  height: 100%;
+  overflow: hidden;
+  z-index: -1;
+  background: linear-gradient(
+      to right,
+      #e81123,
+      #e81123 17%,
+      #f7941d 17%,
+      #f7941d 34%,
+      #fff100 34%,
+      #fff100 51%,
+      #00a650 51%,
+      #00a650 68%,
+      #0054a5 68%,
+      #0054a5 85%,
+      #672d93 85%,
+      #672d93
+  );
+}
