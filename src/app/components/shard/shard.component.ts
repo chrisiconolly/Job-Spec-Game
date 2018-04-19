@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'shard',
@@ -7,9 +7,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ShardComponent implements OnInit {
 
-  constructor() { }
+  position = {x: 0, y:64}
+
+  @Input() public left: number;
+
+  constructor() {}
 
   ngOnInit() {
+    this.position.x = this.left;
   }
 
 }

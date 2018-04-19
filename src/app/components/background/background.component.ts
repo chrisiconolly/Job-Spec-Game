@@ -28,7 +28,6 @@ export class BackgroundComponent implements OnInit {
   }
 
   moveBackgroundIfOutOfBounds = (position, speed, positionOnScreen, boundaryPercentage) => {
-    console.log(position.x);
     if ((speed.x > 0 && positionOnScreen > boundaryPercentage) || (speed.x < 0 && positionOnScreen < boundaryPercentage) || (speed.x > 0 && position.x >= -100)) {
       return {x: position.x, y: position.y};
     }

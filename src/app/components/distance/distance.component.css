@@ -1,0 +1,9 @@
+.distance {
+  position:absolute;
+  left: 0;
+  top: 0;
+  min-width: 2000px;
+  height: 100%;
+  overflow: hidden;
+  z-index: 0;
+}
