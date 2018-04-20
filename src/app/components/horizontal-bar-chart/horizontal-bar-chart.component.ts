@@ -8,19 +8,11 @@ import { Component, OnInit, Input } from '@angular/core';
 export class HorizontalBarChartComponent implements OnInit {
 
   position = { x: 0, y: 64 }
-  data;
-  title;
-  Arr = Array; //Array type captured in a variable
-  flowerMap = {
-    1: -732,
-    2: -632,
-    3: -572,
-    4: -492,
-    5: -412,
-  }
 
   @Input() public left: number;
   @Input() public bottom: number;
+  @Input() public data;
+  @Input() public title;
 
   constructor() { }
 
