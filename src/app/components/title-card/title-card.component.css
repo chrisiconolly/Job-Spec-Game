@@ -28,9 +28,9 @@
   left: 14px;
 }
 .instructions {
-  width: 452px;
-  height: 44px;
+  width: 340px;
+  height: 34px;
   background-image: url("/assets/instructions.svg");
   position: absolute;
-  margin-left: 10px;
+  margin-left: 60px;
 }

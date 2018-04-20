@@ -26,7 +26,8 @@ import { HorizontalBarChartComponent } from './components/horizontal-bar-chart/h
 import { PipeComponent } from './components/pipe/pipe.component';
 import { FlowerComponent } from './components/flower/flower.component'
 
-import { TimesPipe } from './pipes/times-pipe'
+import { TimesPipe } from './pipes/times-pipe';
+import { VideoBoxComponent } from './components/video-box/video-box.component'
 
 
 @NgModule({
@@ -45,7 +46,8 @@ import { TimesPipe } from './pipes/times-pipe'
     PipeComponent,
     FlowerComponent,
     HorizontalBarChartComponent,
-    TimesPipe
+    TimesPipe,
+    VideoBoxComponent
   ],
   imports: [
     BrowserModule
