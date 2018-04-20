@@ -8,3 +8,10 @@
   padding: 20px;
   background-repeat: no-repeat;
 }
+.instructions {
+  width: 400px;
+  height: 40px;
+  background-image: url("/assets/instructions.svg");
+  position: absolute;
+  margin-left: 10px;
+}

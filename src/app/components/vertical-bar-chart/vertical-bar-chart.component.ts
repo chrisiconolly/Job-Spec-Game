@@ -12,7 +12,7 @@ export class VerticalBarChartComponent implements OnInit {
   title;
   flowerMap = {
     1: -732,
-    2: -652,
+    2: -632,
     3: -572,
     4: -492,
     5: -412,
