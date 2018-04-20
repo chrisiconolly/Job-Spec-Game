@@ -21,13 +21,19 @@ export class CharacterComponent implements OnInit {
   moving: boolean;
   direction;
   jumping: boolean = false;
+  gameCompleted: boolean = false;
 
   constructor(private lerpService: LerpService, private charPositionOnService: CharPositionOnScreenService) {
     this.lerp = lerpService.lerp;
     this.calculateNewPosition = lerpService.calculateNewPosition;
-    charPositionOnService.charScreenPosition$.subscribe(
-      val => this.charScreenPositionX = val
-    );
+    charPositionOnService.charScreenPosition$.subscribe(val => this.charScreenPositionX = val);
+    charPositionOnService.gameCompleted$.subscribe(completed => {
+      if (completed === true) {
+        this.gameCompleted = completed
+        this.speed = 0
+      }
+
+    });
   }
 
   moveCharIfInBounds = (position, speed, positionOnScreen, boundaryPercentage) => {
@@ -55,6 +61,7 @@ export class CharacterComponent implements OnInit {
     const smoothMove$ = animationFrame$
       .withLatestFrom(move$, (frame, move) => move)
       .scan(this.lerp)
+      .takeWhile(value => this.gameCompleted === false)
       .subscribe(result => {
         this.position.x = result.x;
         this.charPositionOnService.setCharPosition(result);
@@ -81,11 +88,11 @@ export class CharacterComponent implements OnInit {
         this.jumping = true;
         this.moving = true;
         this.position.y = this.position.y + 200;
-        setTimeout(()=>{
+        setTimeout(() => {
           this.jumping = false;
           this.moving = false;
           this.position.y = this.position.y - 200;
-        },300);
+        }, 300);
       });
 
   }

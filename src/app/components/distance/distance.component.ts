@@ -18,13 +18,18 @@ export class DistanceComponent implements OnInit {
   lerp;
   calculateNewPosition;
   charScreenPositionX;
+  gameCompleted = false;
 
   constructor(private lerpService: LerpService, private charPositionOnService: CharPositionOnScreenService) {
     this.lerp = lerpService.lerp;
     this.calculateNewPosition = lerpService.calculateNewPosition;
-    charPositionOnService.charScreenPosition$.subscribe(
-      val => this.charScreenPositionX = val
-    );
+    charPositionOnService.charScreenPosition$.subscribe(val => this.charScreenPositionX = val);
+    charPositionOnService.gameCompleted$.subscribe(completed => {
+      if (completed === true) {
+        this.gameCompleted = completed
+        this.speed = 0
+      }
+    });
   }
 
   moveBackgroundIfOutOfBounds = (position, speed, positionOnScreen, boundaryPercentage) => {
@@ -49,6 +54,7 @@ export class DistanceComponent implements OnInit {
     const smoothMove$ = animationFrame$
       .withLatestFrom(move$, (frame, move) => move)
       .scan(this.lerp)
+      .takeWhile(value => this.gameCompleted === false)
       .subscribe(result => {
         this.position = result;
       });

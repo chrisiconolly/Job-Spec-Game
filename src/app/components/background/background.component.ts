@@ -20,6 +20,7 @@ export class BackgroundComponent implements OnInit {
   lerp;
   calculateNewPosition;
   charScreenPositionX;
+  gameCompleted = false;
   introText = "<h3>The role:</h3><p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries </p><p> Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries</p>";
   languageData = [
     { label: "Javascript", value: "5" },
@@ -32,14 +33,19 @@ export class BackgroundComponent implements OnInit {
   constructor(private lerpService: LerpService, private charPositionOnService: CharPositionOnScreenService) {
     this.lerp = lerpService.lerp;
     this.calculateNewPosition = lerpService.calculateNewPosition;
-    charPositionOnService.charScreenPosition$.subscribe(
-      val => this.charScreenPositionX = val
-    );
+    charPositionOnService.charScreenPosition$.subscribe(val => this.charScreenPositionX = val);
+    charPositionOnService.gameCompleted$.subscribe(completed => {
+      if (completed === true) {
+        this.gameCompleted = completed
+        this.speed = 0
+      }
+    });
+
   }
 
   moveBackgroundIfOutOfBounds = (position, speed, positionOnScreen, boundaryPercentage) => {
     if ((speed.x > 0 && positionOnScreen > boundaryPercentage) || (speed.x < 0 && positionOnScreen < boundaryPercentage) || (speed.x > 0 && position.x >= -100)) {
-      return {x: position.x, y: position.y};
+      return { x: position.x, y: position.y };
     }
     return this.calculateNewPosition(this.position, speed)
   }
@@ -48,10 +54,10 @@ export class BackgroundComponent implements OnInit {
 
     const leftArrow$ = fromEvent(document, 'keydown')
       .filter((event: KeyboardEvent) => event.key === 'ArrowLeft')
-      .map(event => this.moveBackgroundIfOutOfBounds(this.position, {x: this.speed, y: 0}, this.charScreenPositionX, 21));
+      .map(event => this.moveBackgroundIfOutOfBounds(this.position, { x: this.speed, y: 0 }, this.charScreenPositionX, 21));
     const rightArrow$ = fromEvent(document, 'keydown')
       .filter((event: KeyboardEvent) => event.key === 'ArrowRight')
-      .map(event => this.moveBackgroundIfOutOfBounds(this.position, {x: -this.speed, y: 0}, this.charScreenPositionX, 79));
+      .map(event => this.moveBackgroundIfOutOfBounds(this.position, { x: -this.speed, y: 0 }, this.charScreenPositionX, 79));
 
     const move$ = merge(leftArrow$, rightArrow$);
     const animationFrame$ = Observable.interval(0, Scheduler.animationFrame);
@@ -59,6 +65,7 @@ export class BackgroundComponent implements OnInit {
     const smoothMove$ = animationFrame$
       .withLatestFrom(move$, (frame, move) => move)
       .scan(this.lerp)
+      .takeWhile(value => this.gameCompleted === false)
       .subscribe(result => {
         this.position = result;
       });
