@@ -4,15 +4,23 @@
   position: absolute;
 }
 
-.block-border {
+.block-topbottom {
   background-color: #008fd5;
 }
 
-.block-border:before,
-.block-border:after {
+.block-topbottom:before,
+.block-topbottom:after {
   content: "";
   display: block;
   height: 64px;
   width: 512px;
   background-image: url('/assets/block.svg');
+}
+
+.block-border {
+  background: url(/assets/block-border.svg) no-repeat #008fd5;
+  padding: 64px;
+  width: 600px;
+  height: auto;
+  position: absolute;
 }
