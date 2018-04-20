@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TitleCardComponent implements OnInit {
 
-  specTitle = 'Software Engineer';
+  specTitle = 'Senior Software Engineer';
   position = {x: 200, y: 400};
 
   constructor() { }

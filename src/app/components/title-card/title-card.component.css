@@ -1,16 +1,35 @@
 .title-card{
-  width: 400px;
-  background-image: url("/assets/sign.svg");
+  background-image: url("/assets/sign-middle.svg");
+  background-repeat: repeat-y;
   color: white;
   font-size: 0.7em;
-  width: 400px;
+  width: 415px;
   position: absolute;
-  padding: 20px;
-  background-repeat: no-repeat;
+  padding: 10px 30px;
+  background-repeat: repeat-y;
+  text-align: center
+}
+.title-card::before {
+  content: "";
+  background-image: url(/assets/sign-top.svg);
+  height: 15px;
+  position: absolute;
+  width: 447px;
+  top: -10px;
+  left: 14px;
+}
+.title-card::after {
+  content: "";
+  background-image: url(/assets/sign-bottom.svg);
+  height: 15px;
+  position: absolute;
+  width: 447px;
+  bottom: -10px;
+  left: 14px;
 }
 .instructions {
-  width: 400px;
-  height: 40px;
+  width: 452px;
+  height: 44px;
   background-image: url("/assets/instructions.svg");
   position: absolute;
   margin-left: 10px;
