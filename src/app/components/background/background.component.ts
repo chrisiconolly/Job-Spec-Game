@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { fromEvent } from 'rxjs/observable/fromEvent';
 import { merge } from 'rxjs/observable/merge';
 import { Observable, Scheduler } from 'rxjs/Rx';
@@ -12,6 +12,8 @@ import { CharPositionOnScreenService } from '../../services/char-position-on-scr
   styleUrls: ['./background.component.css']
 })
 export class BackgroundComponent implements OnInit {
+
+  @Input() role: string;
 
   position = { x: -100, y: 0 };
   speed = 200;

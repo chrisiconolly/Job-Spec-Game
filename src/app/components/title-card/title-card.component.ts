@@ -7,10 +7,10 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class TitleCardComponent implements OnInit {
 
-  specTitle = 'Senior Software Engineer';
   position = {x: 200, y: 400};
 
   @Input() public left: number;
+  @Input() public role: string;
 
   constructor() { }
 

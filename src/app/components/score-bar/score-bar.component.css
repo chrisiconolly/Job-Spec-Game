@@ -1,0 +1,24 @@
+.score-bar {
+  position: absolute;
+  top: 0;
+  width: 100%;
+}
+
+h3 {
+  float: left;
+  display: block;
+  width: 33%;
+  font-size: 0.7em;
+}
+
+.left {
+  text-align: left;
+}
+
+.right {
+  text-align: right;
+}
+
+.center {
+  text-align: center
+}
