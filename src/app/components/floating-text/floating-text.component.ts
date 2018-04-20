@@ -12,6 +12,7 @@ export class FloatingTextComponent implements OnInit {
   @Input() public left: number;
   @Input() public top: number;
   @Input() public text: string;
+  @Input() public design: string = 'transparent';
 
   constructor() {}
 

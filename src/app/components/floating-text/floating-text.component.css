@@ -3,3 +3,16 @@
   height: auto;
   position: absolute;
 }
+
+.block-border {
+  background-color: #008fd5;
+}
+
+.block-border:before,
+.block-border:after {
+  content: "";
+  display: block;
+  height: 64px;
+  width: 512px;
+  background-image: url('/assets/block.svg');
+}
