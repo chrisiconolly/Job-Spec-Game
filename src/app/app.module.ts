@@ -20,7 +20,10 @@ import { DistanceComponent } from './components/distance/distance.component';
 import { ShardComponent } from './components/shard/shard.component';
 import { LondonBridgeComponent } from './components/london-bridge/london-bridge.component';
 import { CloudComponent } from './components/cloud/cloud.component';
-import { FloatingTextComponent } from './components/floating-text/floating-text.component'
+import { FloatingTextComponent } from './components/floating-text/floating-text.component';
+import { VerticalBarChartComponent } from './components/vertical-bar-chart/vertical-bar-chart.component';
+import { PipeComponent } from './components/pipe/pipe.component';
+import { FlowerComponent } from './components/flower/flower.component'
 
 
 @NgModule({
@@ -34,7 +37,10 @@ import { FloatingTextComponent } from './components/floating-text/floating-text.
     ShardComponent,
     LondonBridgeComponent,
     CloudComponent,
-    FloatingTextComponent
+    FloatingTextComponent,
+    VerticalBarChartComponent,
+    PipeComponent,
+    FlowerComponent
   ],
   imports: [
     BrowserModule

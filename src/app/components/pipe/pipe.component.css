@@ -1,0 +1,8 @@
+.pipe {
+  height:288px;
+  width: 148px;
+  position: absolute;
+  background-image: url("/assets/pipe.svg");
+  background-repeat: no-repeat;
+  z-index: -1;
+}

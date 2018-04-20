@@ -1,0 +1,12 @@
+.vertical-bar-chart {
+  position: absolute;
+  min-width: 100px;
+  min-height: 100px;
+}
+
+.column {
+  float: left;
+  width: 100px;
+  text-align: center;
+  margin-right: 30px;
+}

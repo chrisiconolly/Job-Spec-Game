@@ -4,7 +4,7 @@
 }
 @font-face {
   font-family: Omnes;
-  src: url(/assets/Omnes/omnesmedium-webfont.ttf);
+  src: url(/assets/omnes/omnes-regular-webfont.ttf);
 }
 
 html, body {
@@ -21,4 +21,13 @@ h1, h2, h3, h4, h5 {
 p {
   line-height: 1.2em;
   font-size: 1.2em;
+}
+
+.center-text {
+  text-align: center;
+}
+
+
+.vertical-bar-chart .flower {
+  margin-left: 14px;
 }

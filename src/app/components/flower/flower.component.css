@@ -1,0 +1,7 @@
+.flower {
+  height:360px;
+  width: 64px;
+  position: absolute;
+  background-image: url("/assets/flower.svg");
+  z-index: -2;
+}
