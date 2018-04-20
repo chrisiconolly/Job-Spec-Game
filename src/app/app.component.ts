@@ -13,8 +13,7 @@ import 'rxjs/add/operator/catch';
 
 export class AppComponent {
   role;
-  background;
-  distance;
+  data;
 
   constructor(private http: Http) {
     var obj;
@@ -26,9 +25,8 @@ export class AppComponent {
       .map((res: any) => {
         const response = res.json();
         this.role = response.role;
-        this.distance = response.distance;
-      })
-      .catch((error: any) => console.log(error));
+        this.data = response;
+      });
 
   }
 }

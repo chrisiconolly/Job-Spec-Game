@@ -1,5 +1,28 @@
 {
   "role": "Senior Software Engineer",
+  "introText": "<h3>The role:</h3><p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries </p><p> Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries</p>",
+  "aboutUsText": "<h3>About us:</h3><p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries </p><p> Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries</p>",
+  "extraText1": "<h3>Responsibilties:</h3><p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries </p><p> Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries</p>",
+  "verticalChart": {
+    "title": "Languages",
+    "data":[
+      { "label": "Javascript", "value": "5" },
+      { "label": "PHP", "value": "2" },
+      { "label": "HTML", "value": "4" },
+      { "label": "CSS", "value": "4" },
+      { "label": "Coffee", "value": "5" }
+    ]
+  },
+  "horizontalChart": {
+    "title": "Partying Ability",
+    "data":[
+      { "label": "Partying", "value": "4" },
+      { "label": "Cross Dressing", "value": "5" },
+      { "label": "Neon Colours", "value": "4" },
+      { "label": "80s moves", "value": "5" },
+      { "label": "90s kids", "value": "1" }
+    ]
+  },
   "distance" : [
     {"type": "shard", "left": 1100 },
     {"type": "bush", "left": 1800, "bottom": -30, "size": "larger" },

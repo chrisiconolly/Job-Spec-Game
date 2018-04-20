@@ -19,14 +19,6 @@ export class HorizontalBarChartComponent implements OnInit {
   ngOnInit() {
     this.position.x = this.left;
     this.position.y = this.bottom;
-    this.data = [
-      { label: "Javascript", value: "5" },
-      { label: "PHP", value: "2" },
-      { label: "HTML", value: "4" },
-      { label: "CSS", value: "4" },
-      { label: "Coffee", value: "5" },
-    ];
-    this.title = "Languages"
   }
 
 }
