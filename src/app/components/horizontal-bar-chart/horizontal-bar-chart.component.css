@@ -1,0 +1,31 @@
+.horizontal-bar-chart {
+  position: absolute;
+  min-width: 100px;
+  min-height: 100px;
+}
+
+.row {
+  height: 50px;
+  text-align: center;
+  margin-top: 30px;
+}
+
+.bullet {
+  float: left;
+  height: 56px;
+  width: 68px;
+  margin-right: 10px;
+  background-image: url("/assets/bullet.svg");
+}
+
+p.label {
+  float: left;
+  display: block;
+  width: 100px;
+  text-align: right;
+  margin-right: 30px;
+}
+
+h3 {
+  margin-bottom: 45px;
+}

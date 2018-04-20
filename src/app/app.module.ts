@@ -22,8 +22,11 @@ import { LondonBridgeComponent } from './components/london-bridge/london-bridge.
 import { CloudComponent } from './components/cloud/cloud.component';
 import { FloatingTextComponent } from './components/floating-text/floating-text.component';
 import { VerticalBarChartComponent } from './components/vertical-bar-chart/vertical-bar-chart.component';
+import { HorizontalBarChartComponent } from './components/horizontal-bar-chart/horizontal-bar-chart.component';
 import { PipeComponent } from './components/pipe/pipe.component';
 import { FlowerComponent } from './components/flower/flower.component'
+
+import { TimesPipe } from './pipes/times-pipe'
 
 
 @NgModule({
@@ -40,7 +43,9 @@ import { FlowerComponent } from './components/flower/flower.component'
     FloatingTextComponent,
     VerticalBarChartComponent,
     PipeComponent,
-    FlowerComponent
+    FlowerComponent,
+    HorizontalBarChartComponent,
+    TimesPipe
   ],
   imports: [
     BrowserModule

@@ -13,3 +13,12 @@
   background: #008fd5;
   z-index: -100;
 }
+
+.logo {
+  position: absolute;
+  top: 50px;
+  left: 150px;
+  background-image: url("/assets/logo.svg");
+  height: 64px;
+  width: 64px;
+}
