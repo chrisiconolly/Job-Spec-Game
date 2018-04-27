@@ -11,6 +11,7 @@ import { BackgroundComponent } from './components/background/background.componen
 // Services
 import { LerpService } from './services/lerp/lerp.service';
 import { ScreenSizeService } from './services/screen-size/screen-size.service';
+import { DataRetrievalService } from './services/data-retrieval/data-retrieval.service';
 import { CharPositionOnScreenService } from './services/char-position-on-screen/char-position-on-screen.service';
 
 // Prototype Manipulation
@@ -63,7 +64,8 @@ import { LevelEndComponent } from './components/level-end/level-end.component'
   providers: [
     LerpService,
     ScreenSizeService,
-    CharPositionOnScreenService
+    CharPositionOnScreenService,
+    DataRetrievalService
   ],
   bootstrap: [AppComponent]
 })

@@ -5,6 +5,7 @@ import { Observable, Scheduler } from 'rxjs/Rx';
 
 import { LerpService } from '../../services/lerp/lerp.service';
 import { CharPositionOnScreenService } from '../../services/char-position-on-screen/char-position-on-screen.service';
+import { DataRetrievalService, levelData } from '../../services/data-retrieval/data-retrieval.service';
 
 @Component({
   selector: 'background',
@@ -13,28 +14,27 @@ import { CharPositionOnScreenService } from '../../services/char-position-on-scr
 })
 export class BackgroundComponent implements OnInit {
 
-  @Input() role: string;
-  @Input() data: string;
+  private position = { x: -100, y: 0 };
+  private speed = 200;
+  private lerp;
+  private calculateNewPosition;
+  private charScreenPositionX;
+  private levelData$: Observable<levelData>;
+  private levelData: levelData;
+  private gameCompleted = false;
 
-  position = { x: -100, y: 0 };
-  speed = 200;
-  lerp;
-  calculateNewPosition;
-  charScreenPositionX;
-  gameCompleted = false;
 
+  constructor(
+    private lerpService: LerpService,
+    private charPositionOnService: CharPositionOnScreenService,
+    private dataRetrievalService: DataRetrievalService) {
 
-  constructor(private lerpService: LerpService, private charPositionOnService: CharPositionOnScreenService) {
     this.lerp = lerpService.lerp;
     this.calculateNewPosition = lerpService.calculateNewPosition;
     charPositionOnService.charScreenPosition$.subscribe(val => this.charScreenPositionX = val);
-    charPositionOnService.gameCompleted$.subscribe(completed => {
-      if (completed === true) {
-        this.gameCompleted = completed
-        this.speed = 0
-      }
-    });
+    charPositionOnService.gameCompleted$.subscribe(completed => this.completeLevel(completed));
 
+    this.levelData$ = dataRetrievalService.levelData$;
   }
 
   moveBackgroundIfOutOfBounds = (position, speed, positionOnScreen, boundaryPercentage) => {
@@ -45,7 +45,18 @@ export class BackgroundComponent implements OnInit {
   }
 
   ngOnInit() {
+    // Draw Distance
+    this.levelData$.subscribe((res) => this.drawDistance(res))
 
+    // Move Distance
+    this.reactToCharacterMove();
+  }
+
+  private drawDistance = (levelData: levelData) => {
+    this.levelData = levelData;
+  }
+
+  private reactToCharacterMove = () => {
     const leftArrow$ = fromEvent(document, 'keydown')
       .filter((event: KeyboardEvent) => event.key === 'ArrowLeft')
       .map(event => this.moveBackgroundIfOutOfBounds(this.position, { x: this.speed, y: 0 }, this.charScreenPositionX, 21));
@@ -66,4 +77,11 @@ export class BackgroundComponent implements OnInit {
 
   }
 
+  private completeLevel = (completed) => {
+    if (completed === true) {
+      this.gameCompleted = completed;
+      this.speed = 0;
+      this.position.x -= 200;
+    }
+  }
 }

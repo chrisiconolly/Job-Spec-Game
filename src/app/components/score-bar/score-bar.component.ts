@@ -1,6 +1,9 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { fromEvent } from 'rxjs/observable/fromEvent';
 import { merge } from 'rxjs/observable/merge';
+import { Observable } from 'rxjs/Rx';
+import { DataRetrievalService, levelData } from '../../services/data-retrieval/data-retrieval.service';
+import { isDefined } from '@angular/compiler/src/util';
 
 @Component({
   selector: 'score-bar',
@@ -9,11 +12,14 @@ import { merge } from 'rxjs/observable/merge';
 })
 export class ScoreBarComponent implements OnInit {
 
-  score: number = 1000;
+  private score: number = 1000;
+  private role: string = '';
 
-  @Input() public role:string;
-
-  constructor() { }
+  constructor(private dataRetrievalService: DataRetrievalService) {
+    this.dataRetrievalService.levelData$.subscribe((res) => {
+      if (res !== undefined) this.role = res.role;
+    })
+   }
 
   ngOnInit() {
     const leftArrowDown$ = fromEvent(document, 'keydown')
@@ -29,3 +35,4 @@ export class ScoreBarComponent implements OnInit {
   }
 
 }
+
