@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, ViewContainerRef, ViewChild, ReflectiveInjector, ComponentFactoryResolver } from '@angular/core';
 import { fromEvent } from 'rxjs/observable/fromEvent';
 import { merge } from 'rxjs/observable/merge';
 import { Observable, Scheduler } from 'rxjs/Rx';
@@ -15,7 +15,9 @@ import { ShardComponent } from '../shard/shard.component';
 @Component({
   selector: 'distance',
   templateUrl: './distance.component.html',
-  styleUrls: ['./distance.component.css']
+  styleUrls: ['./distance.component.css'],
+  entryComponents: [BushComponent, CloudComponent, LondonBridgeComponent, ShardComponent],
+
 })
 export class DistanceComponent implements OnInit {
 
@@ -33,13 +35,13 @@ export class DistanceComponent implements OnInit {
     "london-bridge": LondonBridgeComponent,
     "shard": ShardComponent
   };
-
-  @Input() data: string;
+  currentComponent;
 
   constructor(
     private lerpService: LerpService,
     private charPositionOnService: CharPositionOnScreenService,
-    private dataRetrievalService: DataRetrievalService) {
+    private dataRetrievalService: DataRetrievalService,
+    private resolver: ComponentFactoryResolver) {
 
     this.lerp = lerpService.lerp;
     this.calculateNewPosition = lerpService.calculateNewPosition;
@@ -54,6 +56,8 @@ export class DistanceComponent implements OnInit {
     this.levelData$ = dataRetrievalService.levelData$;
   }
 
+  @ViewChild('dynamicComponentContainer', { read: ViewContainerRef }) dynamicComponentContainer: ViewContainerRef;
+
   ngOnInit() {
     // Draw Distance
     this.levelData$.subscribe((res) => this.drawDistance(res))
@@ -63,7 +67,34 @@ export class DistanceComponent implements OnInit {
   }
 
   private drawDistance = (levelData: levelData) => {
-    console.log(levelData);
+    if (!levelData) {
+      return;
+    }
+    this.currentComponent = null;
+    levelData.distance.map((component) => {this.createComponent(component)});
+
+  }
+
+  private createComponent(data: {type: any, inputs: any }){
+    // Inputs need to be in the following format to be resolved properly
+    let inputProviders = Object.keys(data.inputs).map((inputName) => {return {provide: inputName, useValue: data.inputs[inputName]};});
+    let resolvedInputs = ReflectiveInjector.resolve(inputProviders);
+    // We create an injector out of the data we want to pass down and this components injector
+    let injector = ReflectiveInjector.fromResolvedProviders(resolvedInputs, this.dynamicComponentContainer.parentInjector);
+
+    // We create a factory out of the component we want to create
+    let factory = this.resolver.resolveComponentFactory(this.componentMap[data.type]);
+
+    // We create the component using the factory and the injector
+    let component = factory.create(injector);
+
+    // Inputs arent being added above - this line will add - not sure why input provider isnt working
+    Object.keys(data.inputs).forEach(input => component.instance[input] = data.inputs[input])
+
+    // We insert the component into the dom container
+    this.dynamicComponentContainer.insert(component.hostView);
+
+    this.currentComponent += component;
   }
 
   private reactToCharacterMove = () => {

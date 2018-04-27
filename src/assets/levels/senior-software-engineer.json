@@ -24,17 +24,17 @@
     ]
   },
   "distance" : [
-    {"type": "shard", "left": 1100 },
-    {"type": "bush", "left": 1800, "bottom": -30, "size": "larger" },
-    {"type": "london-bridge", "left": 1100 },
-    {"type": "cloud", "left": 800, "top": 80 },
-    {"type": "cloud", "left": 600, "top": 60 },
-    {"type": "cloud", "left": 1200, "top": 90 },
-    {"type": "cloud", "left": 1850, "top": 275 },
-    {"type": "cloud", "left": 2750, "top": 175 },
-    {"type": "cloud", "left": 2950, "top": 75 },
-    {"type": "bush", "left": 4000, "bottom": -30, "size": "larger" },
-    {"type": "cloud", "left": 4450, "top": 175 },
-    {"type": "cloud", "left": 4650, "top": 75 }
+    {"type": "shard", "inputs": {"left": 1100 }},
+    {"type": "bush", "inputs": {"left": 1800, "bottom": -30, "size": "larger" }},
+    {"type": "london-bridge", "inputs": {"left": 3200 }},
+    {"type": "cloud", "inputs": {"left": 800, "top": 80 }},
+    {"type": "cloud", "inputs": {"left": 600, "top": 60 }},
+    {"type": "cloud", "inputs": {"left": 1200, "top": 90 }},
+    {"type": "cloud", "inputs": {"left": 1850, "top": 275 }},
+    {"type": "cloud", "inputs": {"left": 2750, "top": 175 }},
+    {"type": "cloud", "inputs": {"left": 2950, "top": 75 }},
+    {"type": "bush", "inputs": {"left": 4000, "bottom": -30, "size": "larger" }},
+    {"type": "cloud", "inputs": {"left": 4450, "top": 175 }},
+    {"type": "cloud", "inputs": {"left": 4650, "top": 75 }}
   ]
 }
