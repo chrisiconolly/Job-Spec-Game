@@ -1,32 +1,29 @@
-import { Component, Input } from '@angular/core';
-import { Injectable } from '@angular/core';
-import { Http, Response, Headers, RequestOptions } from '@angular/http';
-import { Observable } from 'rxjs/Rx';
-import 'rxjs/add/operator/map';
-import 'rxjs/add/operator/catch';
+import {
+  Component,
+  Input,
+  OnInit,
+} from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs/Observable';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
+export class AppComponent implements OnInit {
+  public data: ILevel;
+  public role: string;
 
-export class AppComponent {
-  role;
-  data;
+  constructor(private http: HttpClient) { }
 
-  constructor(private http: Http) {
-    var obj;
-    this.getJSON().subscribe(data => obj = data, error => console.log(error));
-  }
-
-  public getJSON(): Observable<any> {
-    return this.http.get("/assets/levels/senior-software-engineer.json")
-      .map((res: any) => {
-        const response = res.json();
-        this.role = response.role;
-        this.data = response;
-      });
-
+  ngOnInit(): void {
+    this.http
+      .get<ILevel>('/assets/levels/senior-software-engineer.json')
+      .subscribe((res: ILevel) => {
+        this.role = res.role;
+        this.data = res;
+      },
+      error => console.log(error));
   }
 }

@@ -1,12 +1,19 @@
-<div class="level-end" [style.left]="position.x + 'px'" [style.bottom]="position.y + 'px'">
+<div class="level-end"
+     [style.left]="position.x + 'px'"
+     [style.bottom]="position.y + 'px'">
+
     <div class="flag-pole"></div>
     <div class="castle" (click)="getPosition()"></div>
+
     <div *ngIf="gameCompleted">
-        <div class="message"><h3>Congratulations!!</h3><p>Email recruitment@wonga.com to find out more</p></div>
-        <div  class="pyro">
-            <div class="before"></div>
-            <div class="after"></div>
-          </div>
+      <div class="message">
+        <h3>Congratulations!!</h3>
+        <p>Email recruitment@wonga.com to find out more</p>
+      </div>
+      <div  class="pyro">
+        <div class="before"></div>
+        <div class="after"></div>
+      </div>
     </div>
 
 </div>

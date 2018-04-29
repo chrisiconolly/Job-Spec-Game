@@ -3,6 +3,7 @@
   height: 64px;
   background-image: url("/assets/woman-standing.svg");
   position: absolute;
+  transition: bottom .2s linear;
 }
 
 .character.moving {
@@ -10,10 +11,5 @@
 }
 
 .direction-left {
-  -moz-transform: scaleX(-1);
-    -o-transform: scaleX(-1);
-    -webkit-transform: scaleX(-1);
-    transform: scaleX(-1);
-    filter: FlipH;
-    -ms-filter: "FlipH";
+  transform: scaleX(-1);
 }

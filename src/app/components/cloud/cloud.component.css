@@ -1,6 +1,6 @@
 .cloud {
-  height:96px;
-  position: absolute;
   width: 128px;
+  height: 96px;
+  position: absolute;
   background-image: url("/assets/cloud.svg");
 }

@@ -1,6 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { HttpModule } from '@angular/http';
 import { HttpClientModule } from '@angular/common/http';
 
 // Components
@@ -14,8 +13,6 @@ import { ScreenSizeService } from './services/screen-size/screen-size.service';
 import { CharPositionOnScreenService } from './services/char-position-on-screen/char-position-on-screen.service';
 
 // Prototype Manipulation
-import 'rxjs/add/operator/filter'
-import 'rxjs/add/operator/map';
 import { TitleCardComponent } from './components/title-card/title-card.component';
 import { BushComponent } from './components/bush/bush.component';
 import { DistanceComponent } from './components/distance/distance.component';
@@ -32,7 +29,6 @@ import { TimesPipe } from './pipes/times-pipe';
 import { VideoBoxComponent } from './components/video-box/video-box.component';
 import { ScoreBarComponent } from './components/score-bar/score-bar.component';
 import { LevelEndComponent } from './components/level-end/level-end.component'
-
 
 @NgModule({
   declarations: [
@@ -53,17 +49,16 @@ import { LevelEndComponent } from './components/level-end/level-end.component'
     TimesPipe,
     VideoBoxComponent,
     ScoreBarComponent,
-    LevelEndComponent
+    LevelEndComponent,
   ],
   imports: [
     BrowserModule,
-    HttpModule,
-    HttpClientModule
+    HttpClientModule,
   ],
   providers: [
     LerpService,
     ScreenSizeService,
-    CharPositionOnScreenService
+    CharPositionOnScreenService,
   ],
   bootstrap: [AppComponent]
 })

@@ -18,9 +18,9 @@
 }
 
 .block-border {
-  background: url(/assets/block-border.svg) no-repeat #008fd5;
-  padding: 64px;
   width: 600px;
   height: 320px;
+  padding: 64px;
   position: absolute;
+  background: url(/assets/block-border.svg) no-repeat #008fd5;
 }

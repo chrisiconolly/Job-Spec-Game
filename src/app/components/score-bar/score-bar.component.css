@@ -1,14 +1,14 @@
 .score-bar {
-  position: absolute;
-  top: 0;
   width: 100%;
+  top: 0;
+  position: absolute;
 }
 
 h3 {
-  float: left;
-  display: block;
   width: 33%;
+  display: block;
   font-size: 0.7em;
+  float: left;
 }
 
 .left {

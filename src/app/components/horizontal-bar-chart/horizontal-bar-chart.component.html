@@ -1,7 +1,12 @@
-<div class="horizontal-bar-chart" [style.left]="position.x + 'px'" [style.bottom]="position.y + 'px'">
+<div class="horizontal-bar-chart"
+     [style.left]="position.x + 'px'"
+     [style.bottom]="position.y + 'px'">
+
   <h3 class="center-text">{{title}}</h3>
+
   <div class="row" *ngFor="let row of data">
     <p class="label">{{row.label}}</p>
-    <div class="bullet" *ngFor="let x of row.value|times"></div>
+    <div class="bullet" *ngFor="let x of row.value | times"></div>
   </div>
+
 </div>

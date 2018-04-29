@@ -1,5 +1,12 @@
-import { Component, OnInit, Input, ElementRef } from '@angular/core';
-import { CharPositionOnScreenService } from '../../services/char-position-on-screen/char-position-on-screen.service'
+import {
+  Component,
+  OnInit,
+  Input,
+  ElementRef,
+} from '@angular/core';
+import {
+  CharPositionOnScreenService,
+} from '../../services/char-position-on-screen/char-position-on-screen.service';
 
 @Component({
   selector: 'level-end',
@@ -7,24 +14,28 @@ import { CharPositionOnScreenService } from '../../services/char-position-on-scr
   styleUrls: ['./level-end.component.scss']
 })
 export class LevelEndComponent implements OnInit {
-
-  position = { x: 0, y: 64 }
+  position: IPosition;
   gameCompleted = false;
 
   @Input() public left: number;
 
-  constructor(public elRef: ElementRef, public charPositionOnScreenService: CharPositionOnScreenService) { }
+  constructor(
+    public elRef: ElementRef,
+    private charPositionOnScreenService: CharPositionOnScreenService,
+  ) {
+    this.position = { x: 0, y: 64 };
+  }
 
-  ngOnInit() {
+  public ngOnInit(): void {
     this.position.x = this.left;
+
     this.charPositionOnScreenService.charXPosition$
-      .subscribe( position => {
+      .subscribe(position => {
           if ((this.left * 1) + (290 * 1) < position - this.elRef.nativeElement.parentElement.offsetLeft) {
             this.gameCompleted = true;
             this.charPositionOnScreenService.setGameCompleted();
           }
         }
-      )
+      );
   }
-
 }

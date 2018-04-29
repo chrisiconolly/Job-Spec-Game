@@ -1,18 +1,51 @@
-<div class="background" [style.left] ="position.x + 'px'" [style.width]="'8000px'">
+<div class="background"
+     [style.left] ="position.x + 'px'"
+     [style.width]="'8000px'">
+
   <div class="floor"></div>
+
   <title-card left=400 [role]="role"></title-card>
+
   <bush left=300 size="large"></bush>
+
   <bush left=700 size="small"></bush>
-  <floating-text left=1500 top=230 [text]="data?.introText"></floating-text>
-  <bush left=1800 size="small"></bush>
-  <vertical-bar-chart left=2400 bottom=550 [data]="data?.verticalChart.data" [title]="data?.verticalChart.title"></vertical-bar-chart>
+
+  <floating-text left=1500
+                 top=230
+                 [text]="data?.introText"></floating-text>
+
+  <bush left=1800
+        size="small"></bush>
+
+  <vertical-bar-chart left=2400
+                      bottom=550
+                      [data]="data?.verticalChart.data"
+                      [title]="data?.verticalChart.title"></vertical-bar-chart>
+
   <bush left=3100 size="larger"></bush>
-  <floating-text left=3300 top=130 [text]="data?.extraText1" design="block-border"></floating-text>
-  <horizontal-bar-chart left=4150 bottom=200 [data]="data?.horizontalChart.data" [title]="data?.horizontalChart.title"></horizontal-bar-chart>
+
+  <floating-text left=3300
+                 top=130
+                 [text]="data?.extraText1"
+                 design="block-border"></floating-text>
+
+  <horizontal-bar-chart left=4150
+                        bottom=200
+                        [data]="data?.horizontalChart.data"
+                        [title]="data?.horizontalChart.title"></horizontal-bar-chart>
+
   <bush left=4600 size="large"></bush>
-  <floating-text left=4900 top=120 [text]="data?.aboutUsText"></floating-text>
-  <video-box left=5600 youTubeId="fVwQSkW5kC0" bottom=200></video-box>
+
+  <floating-text left=4900
+                 top=120
+                 [text]="data?.aboutUsText"></floating-text>
+
+  <video-box left=5600
+             youTubeId="fVwQSkW5kC0"
+             bottom=200></video-box>
+
   <bush left=5600 size="small"></bush>
+
   <level-end left=6500></level-end>
 </div>
 

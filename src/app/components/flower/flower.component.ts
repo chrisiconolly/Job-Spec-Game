@@ -6,15 +6,19 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./flower.component.css']
 })
 export class FlowerComponent implements OnInit {
+  public position: IPosition;
 
-  position = {x: 0, y:64}
+  @Input()
+  public left: number;
 
-  @Input() public left: number;
-  @Input() public bottom: number;
+  @Input()
+  public bottom: number;
 
-  constructor() {}
+  constructor() {
+    this.position = { x: 0, y: 64 };
+  }
 
-  ngOnInit() {
+  public ngOnInit(): void {
     this.position.x = this.left;
     this.position.y = this.bottom;
   }

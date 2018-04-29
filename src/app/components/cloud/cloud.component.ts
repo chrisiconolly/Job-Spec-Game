@@ -6,13 +6,17 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./cloud.component.css']
 })
 export class CloudComponent implements OnInit {
+  position: IPosition;
 
-  position = {x: 0, y:0}
+  @Input()
+  public left: number;
 
-  @Input() public left: number;
-  @Input() public top: number;
+  @Input()
+  public top: number;
 
-  constructor() {}
+  constructor() {
+    this.position = { x: 0, y: 0 };
+  }
 
   ngOnInit() {
     this.position.x = this.left;

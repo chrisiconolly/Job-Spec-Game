@@ -6,16 +6,19 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./title-card.component.css']
 })
 export class TitleCardComponent implements OnInit {
+  public position: IPosition;
 
-  position = {x: 200, y: 400};
+  @Input()
+  public left: number;
 
-  @Input() public left: number;
-  @Input() public role: string;
+  @Input()
+  public role: string;
 
-  constructor() { }
-
-  ngOnInit() {
-    this.position.x = this.left
+  constructor() {
+    this.position = {x: 200, y: 400};
   }
 
+  public ngOnInit(): void {
+    this.position.x = this.left;
+  }
 }

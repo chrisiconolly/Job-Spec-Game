@@ -1,7 +1,17 @@
 import { Component, OnInit } from '@angular/core';
-import { fromEvent } from 'rxjs/observable/fromEvent';
 import { merge } from 'rxjs/observable/merge';
-import { Observable, Scheduler } from 'rxjs/Rx';
+import { Observable } from 'rxjs/Observable';
+import { fromEvent } from 'rxjs/observable/fromEvent';
+import { animationFrame } from 'rxjs/scheduler/animationFrame';
+import {
+  map,
+  filter,
+  withLatestFrom,
+  scan,
+  takeWhile,
+  repeat,
+} from 'rxjs/operators';
+import 'rxjs/add/observable/of';
 
 import { LerpService } from '../../services/lerp/lerp.service';
 import { CharPositionOnScreenService } from '../../services/char-position-on-screen/char-position-on-screen.service';
@@ -12,53 +22,66 @@ import { CharPositionOnScreenService } from '../../services/char-position-on-scr
   styleUrls: ['./distance.component.css']
 })
 export class DistanceComponent implements OnInit {
+  public position: IPosition;
+  public speed: number;
+  public charScreenPositionX: number;
+  public gameCompleted: boolean;
 
-  position = { x: -100, y: 0 };
-  speed = 150;
-  lerp;
-  calculateNewPosition;
-  charScreenPositionX;
-  gameCompleted = false;
+  constructor(
+    private lerpService: LerpService,
+    private charPositionOnService: CharPositionOnScreenService,
+  ) {
+    this.position = { x: -100, y: 0 };
+    this.speed = 150;
+    this.gameCompleted = false;
 
-  constructor(private lerpService: LerpService, private charPositionOnService: CharPositionOnScreenService) {
-    this.lerp = lerpService.lerp;
-    this.calculateNewPosition = lerpService.calculateNewPosition;
-    charPositionOnService.charScreenPosition$.subscribe(val => this.charScreenPositionX = val);
-    charPositionOnService.gameCompleted$.subscribe(completed => {
-      if (completed === true) {
-        this.gameCompleted = completed
-        this.speed = 0
-      }
-    });
+    charPositionOnService.charScreenPosition$
+      .subscribe(val => this.charScreenPositionX = val);
+
+    charPositionOnService.gameCompleted$
+      .subscribe(completed => {
+        if (completed) {
+          this.gameCompleted = true;
+          this.speed = 0;
+        }
+      });
   }
 
-  moveBackgroundIfOutOfBounds = (position, speed, positionOnScreen, boundaryPercentage) => {
-    if ((speed.x > 0 && positionOnScreen > boundaryPercentage) || (speed.x < 0 && positionOnScreen < boundaryPercentage) || (speed.x > 0 && position.x >= -100)) {
+  public moveBackgroundIfOutOfBounds(
+    position: IPosition,
+    speed: IPosition,
+    positionOnScreen: number,
+    boundaryPercentage: number,
+  ): IPosition {
+    if ((speed.x > 0 && positionOnScreen > boundaryPercentage)
+        || (speed.x < 0 && positionOnScreen < boundaryPercentage)
+        || (speed.x > 0 && position.x >= -100)) {
       return {x: position.x, y: position.y};
     }
-    return this.calculateNewPosition(this.position, speed)
+
+    return this.lerpService.calculateNewPosition(this.position, speed);
   }
 
-  ngOnInit() {
+  public ngOnInit(): void {
+    const leftArrow$: Observable<IPosition> = fromEvent(document, 'keydown')
+      .pipe(
+        filter((event: KeyboardEvent) => event.key === 'ArrowLeft'),
+        map(event => this.moveBackgroundIfOutOfBounds(this.position, {x: this.speed, y: 0}, this.charScreenPositionX, 21)));
 
-    const leftArrow$ = fromEvent(document, 'keydown')
-      .filter((event: KeyboardEvent) => event.key === 'ArrowLeft')
-      .map(event => this.moveBackgroundIfOutOfBounds(this.position, {x: this.speed, y: 0}, this.charScreenPositionX, 21));
-    const rightArrow$ = fromEvent(document, 'keydown')
-      .filter((event: KeyboardEvent) => event.key === 'ArrowRight')
-      .map(event => this.moveBackgroundIfOutOfBounds(this.position, {x: -this.speed, y: 0}, this.charScreenPositionX, 79));
+    const rightArrow$: Observable<IPosition> = fromEvent(document, 'keydown')
+      .pipe(
+        filter((event: KeyboardEvent) => event.key === 'ArrowRight'),
+        map(event => this.moveBackgroundIfOutOfBounds(this.position, {x: -this.speed, y: 0}, this.charScreenPositionX, 79)));
 
-    const move$ = merge(leftArrow$, rightArrow$);
-    const animationFrame$ = Observable.interval(0, Scheduler.animationFrame);
+    const move$: Observable<IPosition> = merge(leftArrow$, rightArrow$);
 
-    const smoothMove$ = animationFrame$
-      .withLatestFrom(move$, (frame, move) => move)
-      .scan(this.lerp)
-      .takeWhile(value => this.gameCompleted === false)
-      .subscribe(result => {
-        this.position = result;
-      });
-
+    Observable.of(0, animationFrame)
+      .pipe(
+        repeat(),
+        withLatestFrom(move$, (frame, move) => move),
+        scan(this.lerpService.lerp),
+        takeWhile(value => this.gameCompleted === false),
+      )
+      .subscribe((result: IPosition) => this.position = result);
   }
-
 }

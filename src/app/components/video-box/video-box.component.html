@@ -1,13 +1,26 @@
-<div class="video-box" [style.left]="position.x + 'px'" [style.bottom]="position.y + 'px'">
+<div class="video-box"
+     [style.left]="position.x + 'px'"
+     [style.bottom]="position.y + 'px'">
+
   <div class="wrapper">
-    <div *ngIf="iframe==''" class="thumbnail youtube" (click)="getIframe()">
+    <div *ngIf="iframe==''"
+         class="thumbnail youtube"
+         (click)="getIframe()">
+
       <div class="play-button"></div>
       <div>
         <img [src]="thumbnail">
       </div>
+
     </div>
+
     <div *ngIf="iframe!=''" class="iframe">
-        <iframe width="100%" height="318" [src]="safeURL" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+      <iframe width="100%"
+              height="318"
+              [src]="safeURL"
+              frameborder="0"
+              allow="autoplay; encrypted-media" allowfullscreen></iframe>
     </div>
   </div>
+
 </div>

@@ -1,4 +1,8 @@
-import { Component, OnInit, Input } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  Input,
+} from '@angular/core';
 
 @Component({
   selector: 'london-bridge',
@@ -6,14 +10,16 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./london-bridge.component.css']
 })
 export class LondonBridgeComponent implements OnInit {
+  public position: IPosition;
 
-  position = {x: 0, y:64}
+  @Input()
+  public left: number;
 
-  @Input() public left: number;
+  constructor() {
+    this.position = { x: 0, y: 64 };
+  }
 
-  constructor() {}
-
-  ngOnInit() {
+  public ngOnInit(): void {
     this.position.x = this.left;
   }
 }

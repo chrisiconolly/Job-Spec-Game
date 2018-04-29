@@ -1,6 +1,6 @@
 .pipe {
-  height:288px;
   width: 148px;
+  height:288px;
   position: absolute;
   background-image: url("/assets/pipe.svg");
   background-repeat: no-repeat;

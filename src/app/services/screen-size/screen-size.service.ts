@@ -1,29 +1,21 @@
 import { Injectable } from '@angular/core';
-import { Observable, BehaviorSubject } from 'rxjs';
+import { Observable } from 'rxjs/Observable';
+import { BehaviorSubject } from 'rxjs/BehaviorSubject';
+import { of } from 'rxjs/observable/of';
+import { fromEvent } from 'rxjs/observable/fromEvent';
+import { debounceTime } from 'rxjs/operators';
 
 @Injectable()
 export class ScreenSizeService {
-
-  width$: Observable<number>;
-  height$: Observable<number>;
+  public width$: Observable<number>;
+  private width: BehaviorSubject<number>;
 
   constructor() {
-    let windowSize$ = this.createWindowSize$();
-    this.width$ = (windowSize$.pluck('width') as Observable<number>).distinctUntilChanged();
-    this.height$ = (windowSize$.pluck('height') as Observable<number>).distinctUntilChanged();
-  }
+    this.width = new BehaviorSubject(window.innerWidth);
+    this.width$ = this.width.asObservable();
 
-  createWindowSize$ = () =>
-    Observable.fromEvent(window, 'resize')
-      .map(this.getWindowSize)
-      .startWith(this.getWindowSize())
-      .publishReplay(1)
-      .refCount();
-
-  getWindowSize = () => {
-    return {
-      height: window.innerHeight,
-      width: window.innerWidth
-    }
+    fromEvent(window, 'resize')
+        .pipe(debounceTime(500))
+        .subscribe(() => this.width.next(window.innerWidth));
   }
 }

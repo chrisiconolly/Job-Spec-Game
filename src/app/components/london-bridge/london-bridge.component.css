@@ -1,6 +1,6 @@
 .london-bridge {
   width:1164px;
   height: 336px;
+  position: absolute;
   background-image: url("/assets/london-bridge.svg");
-  position: absolute
 }

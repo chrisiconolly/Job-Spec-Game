@@ -1,6 +1,13 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { fromEvent } from 'rxjs/observable/fromEvent';
 import { merge } from 'rxjs/observable/merge';
+import { Observable } from 'rxjs/Observable';
+import {
+  map,
+  filter,
+  startWith,
+  scan,
+} from 'rxjs/operators';
 
 @Component({
   selector: 'score-bar',
@@ -8,24 +15,26 @@ import { merge } from 'rxjs/observable/merge';
   styleUrls: ['./score-bar.component.css']
 })
 export class ScoreBarComponent implements OnInit {
+  public score: number;
 
-  score: number = 1000;
+  @Input()
+  public role: string;
 
-  @Input() public role:string;
-
-  constructor() { }
-
-  ngOnInit() {
-    const leftArrowDown$ = fromEvent(document, 'keydown')
-      .filter((event: KeyboardEvent) => event.key === 'ArrowLeft');
-    const rightArrowDown$ = fromEvent(document, 'keydown')
-      .filter((event: KeyboardEvent) => event.key === 'ArrowRight');
-
-    const move$ = merge(leftArrowDown$, rightArrowDown$)
-      .startWith(1000)
-      .map(event => 10)
-      .scan( (acc, curr) => acc + curr )
-      .subscribe(score => this.score = score)
+  constructor() {
+    this.score = 1000;
   }
 
+  public ngOnInit(): void {
+    const rightArrowDown$: Observable<KeyboardEvent> = fromEvent(document, 'keydown')
+      .pipe(
+        filter((event: KeyboardEvent) => event.key === 'ArrowRight'));
+
+    rightArrowDown$
+      .pipe(
+        map(() => 10),
+        startWith(1000),
+        scan((acc, curr) => acc + curr),
+      )
+      .subscribe(score => this.score = score);
+  }
 }

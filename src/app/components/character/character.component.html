@@ -1,2 +1,6 @@
-<div *ngIf="!gameCompleted" class="character" [style.left]="position.x + 'px'" [style.bottom]="position.y + 'px'" [class.moving]="moving==true"
-  [class.direction-left]="direction=='left'"></div>
+<div *ngIf="!gameCompleted"
+     class="character"
+     [style.left]="position.x + 'px'"
+     [style.bottom]="position.y + 'px'"
+     [class.moving]="moving===true"
+     [class.direction-left]="direction==='LEFT'"></div>

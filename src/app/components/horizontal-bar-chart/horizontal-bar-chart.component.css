@@ -1,7 +1,7 @@
 .horizontal-bar-chart {
-  position: absolute;
   min-width: 100px;
   min-height: 100px;
+  position: absolute;
 }
 
 .row {
@@ -11,19 +11,19 @@
 }
 
 .bullet {
-  float: left;
-  height: 56px;
   width: 68px;
+  height: 56px;
+  float: left;
   margin-right: 10px;
   background-image: url("/assets/bullet.svg");
 }
 
 p.label {
-  float: left;
-  display: block;
   width: 100px;
-  text-align: right;
+  display: block;
+  float: left;
   margin-right: 30px;
+  text-align: right;
 }
 
 h3 {

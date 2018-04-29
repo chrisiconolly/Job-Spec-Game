@@ -1,6 +1,6 @@
 .shard {
-  width:113px;
+  width: 113px;
   height: 500px;
+  position: absolute;
   background-image: url("/assets/shard.svg");
-  position: absolute
 }

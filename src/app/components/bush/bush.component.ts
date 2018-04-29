@@ -6,18 +6,23 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./bush.component.css']
 })
 export class BushComponent implements OnInit {
+  position: IPosition;
 
-  position = {x: 0, y:64}
+  @Input()
+  public left: number;
 
-  @Input() public left: number;
-  @Input() public bottom: number;
-  @Input() public size: string;
+  @Input()
+  public bottom: number;
 
-  constructor() {}
+  @Input()
+  public size: string;
 
-  ngOnInit() {
-    this.position.x = this.left;
-    this.position.y = this.bottom ? this.bottom : 64;
+  constructor() {
+    this.position = { x: 0, y: 64 };
   }
 
+  public ngOnInit(): void {
+    this.position.x = this.left;
+    this.position.y = this.bottom || 64;
+  }
 }
