@@ -1,4 +1,5 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, ElementRef } from '@angular/core';
+import { CharPositionOnScreenService } from '../../services/char-position-on-screen/char-position-on-screen.service';
 
 @Component({
   selector: 'vertical-bar-chart',
@@ -7,6 +8,7 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class VerticalBarChartComponent implements OnInit {
 
+  onScreen = false;
   position = {x: 0, y:64}
   flowerMap = {
     1: -732,
@@ -22,11 +24,26 @@ export class VerticalBarChartComponent implements OnInit {
   @Input() public data;
   @Input() public title;
 
-  constructor() {}
+  constructor(public elRef: ElementRef, public charPositionOnScreenService: CharPositionOnScreenService) { }
 
   ngOnInit() {
     this.position.x = this.left;
     this.position.y = this.bottom;
+    this.charPositionOnScreenService.charXPosition$
+      .subscribe( position => {
+          if ((this.left * 1) + (290 * 1) < position - this.elRef.nativeElement.parentElement.offsetLeft) {
+            this.onScreen = true;
+            console.log('hi');
+          }
+        }
+      )
+  }
+
+  private getHeight = (score: number) => {
+    if (this.onScreen) {
+      return this.flowerMap[score];
+    }
+    return -1000;
   }
 
 }

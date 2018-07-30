@@ -1,40 +1,240 @@
 {
   "role": "Senior Software Engineer",
-  "introText": "<h3>The role:</h3><p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries </p><p> Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries</p>",
-  "aboutUsText": "<h3>About us:</h3><p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries </p><p> Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries</p>",
-  "extraText1": "<h3>Responsibilties:</h3><p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries </p><p> Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries</p>",
-  "verticalChart": {
-    "title": "Languages",
-    "data":[
-      { "label": "Javascript", "value": "5" },
-      { "label": "PHP", "value": "2" },
-      { "label": "HTML", "value": "4" },
-      { "label": "CSS", "value": "4" },
-      { "label": "Coffee", "value": "5" }
-    ]
-  },
-  "horizontalChart": {
-    "title": "Partying Ability",
-    "data":[
-      { "label": "Partying", "value": "4" },
-      { "label": "Cross Dressing", "value": "5" },
-      { "label": "Neon Colours", "value": "4" },
-      { "label": "80s moves", "value": "5" },
-      { "label": "90s kids", "value": "1" }
-    ]
-  },
-  "distance" : [
-    {"type": "shard", "inputs": {"left": 1100 }},
-    {"type": "bush", "inputs": {"left": 1800, "bottom": -30, "size": "larger" }},
-    {"type": "london-bridge", "inputs": {"left": 3200 }},
-    {"type": "cloud", "inputs": {"left": 800, "top": 80 }},
-    {"type": "cloud", "inputs": {"left": 600, "top": 60 }},
-    {"type": "cloud", "inputs": {"left": 1200, "top": 90 }},
-    {"type": "cloud", "inputs": {"left": 1850, "top": 275 }},
-    {"type": "cloud", "inputs": {"left": 2750, "top": 175 }},
-    {"type": "cloud", "inputs": {"left": 2950, "top": 75 }},
-    {"type": "bush", "inputs": {"left": 4000, "bottom": -30, "size": "larger" }},
-    {"type": "cloud", "inputs": {"left": 4450, "top": 175 }},
-    {"type": "cloud", "inputs": {"left": 4650, "top": 75 }}
+  "background": [
+    {
+      "type": "bush",
+      "inputs": {
+        "left": 300,
+        "bottom": 64,
+        "size": "large"
+      }
+    },
+    {
+      "type": "bush",
+      "inputs": {
+        "left": 700,
+        "bottom": 64,
+        "size": "small"
+      }
+    },
+    {
+      "type": "floating-text",
+      "inputs": {
+        "left": 1100,
+        "bottom": 344,
+        "design": "sign",
+        "text": "<h3>Tech at Wonga</h3><p>Wonga is a fully online system meaning our engineering team is at the heart of what we do - we expect our engineers to be involved in every step of the development lifecycle from working with a Product Owner to delivering and maintaining their code in production.</p>"
+      }
+    },{
+      "type": "floating-text",
+      "inputs": {
+        "left": 1700,
+        "bottom": 184,
+        "design": "block-border",
+        "text": "<h3>What is the role?</h3><p>As a senior engineer at Wonga it’s your responsibility to drive the forward thinking approach we are striving to build in our teams, being engaged and showing initiative in all parts of the development lifecycle.</p><p>You will need to have the technical ability to get involved with, and lead day to day development, influence the direction of our technology and coach those around you whilst being open to and self-motivating in growing your own skill set. Passion, initiative and collaboration are the most important attributes we are looking for in colleagues to help us build an engineering team based around our core values.</p>"
+      }
+    },
+    {
+      "type": "bush",
+      "inputs": {
+        "left": 1700,
+        "bottom": 64,
+        "size": "small"
+      }
+    },
+    {
+      "type": "vertical-bar-chart",
+      "inputs": {
+        "left": 2600,
+        "bottom": 550,
+        "title": "Desired Skills",
+        "data": [
+          {
+            "label": ".NET / .NETCore",
+            "value": "5"
+          },
+          {
+            "label": "Distributed System Design",
+            "value": "4"
+          },
+          {
+            "label": "Asynchronous Programming",
+            "value": "5"
+          },
+          {
+            "label": "Test automation",
+            "value": "4"
+          },
+          {
+            "label": "Agile Experience",
+            "value": "4"
+          }
+        ]
+      }
+    },
+    {
+      "type": "floating-text",
+      "inputs": {
+        "left": 3700,
+        "bottom": 214,
+        "design": "block-border",
+        "text": "<h3>About us:</h3><p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries </p><p> Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries</p>"
+      }
+    },
+    {
+      "type": "horizontal-bar-chart",
+      "inputs": {
+        "left": 4650,
+        "bottom": 200,
+        "title": "Desired Skills",
+        "data": [
+          {
+            "label": ".NET / .NETCore",
+            "value": "8"
+          },
+          {
+            "label": "Distributed System Design",
+            "value": "8"
+          },
+          {
+            "label": "Asynchronous Programming",
+            "value": "8"
+          },
+          {
+            "label": "Test automation",
+            "value": "8"
+          },
+          {
+            "label": "Agile Experience",
+            "value": "8"
+          }
+        ]
+      }
+    },
+    {
+      "type": "bush",
+      "inputs": {
+        "left": 4600,
+        "bottom": 64,
+        "size": "large"
+      }
+    },
+    {
+      "type": "floating-text",
+      "inputs": {
+        "left": 4200,
+        "bottom": 214,
+        "design": "block-border",
+        "text": "<h3>About us:</h3><p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries </p><p> Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries</p>"
+      }
+    },
+    {
+      "type": "video",
+      "inputs": {
+        "left": 5100,
+        "bottom": 214,
+        "youTubeId": "fVwQSkW5kC0"
+      }
+    },
+    {
+      "type": "bush",
+      "inputs": {
+        "left": 5100,
+        "bottom": 64,
+        "size": "small"
+      }
+    },
+    {
+      "type": "level-end",
+      "inputs": {
+        "left": 6100
+      }
+    }
+  ],
+  "distance": [
+    {
+      "type": "shard",
+      "inputs": {
+        "left": 900
+      }
+    },
+    {
+      "type": "bush",
+      "inputs": {
+        "left": 1800,
+        "bottom": -30,
+        "size": "larger"
+      }
+    },
+    {
+      "type": "london-bridge",
+      "inputs": {
+        "left": 2500
+      }
+    },
+    {
+      "type": "cloud",
+      "inputs": {
+        "left": 800,
+        "top": 80
+      }
+    },
+    {
+      "type": "cloud",
+      "inputs": {
+        "left": 600,
+        "top": 60
+      }
+    },
+    {
+      "type": "cloud",
+      "inputs": {
+        "left": 1200,
+        "top": 90
+      }
+    },
+    {
+      "type": "cloud",
+      "inputs": {
+        "left": 1850,
+        "top": 275
+      }
+    },
+    {
+      "type": "cloud",
+      "inputs": {
+        "left": 2750,
+        "top": 175
+      }
+    },
+    {
+      "type": "cloud",
+      "inputs": {
+        "left": 2950,
+        "top": 75
+      }
+    },
+    {
+      "type": "bush",
+      "inputs": {
+        "left": 4000,
+        "bottom": -30,
+        "size": "larger"
+      }
+    },
+    {
+      "type": "cloud",
+      "inputs": {
+        "left": 4450,
+        "top": 175
+      }
+    },
+    {
+      "type": "cloud",
+      "inputs": {
+        "left": 4650,
+        "top": 75
+      }
+    }
   ]
 }

@@ -22,5 +22,6 @@ export class DataRetrievalService {
 
 export interface levelData {
   role: string,
-  distance: [any]
+  distance: [any],
+  background: [any]
 }

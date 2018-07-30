@@ -4,4 +4,5 @@
   position: absolute;
   background-image: url("/assets/flower.svg");
   z-index: -2;
+  transition: all 1s ease 0s;
 }

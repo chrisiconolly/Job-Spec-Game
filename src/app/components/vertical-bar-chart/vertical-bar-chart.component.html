@@ -2,7 +2,7 @@
   <h3 class="center-text">{{title}}</h3>
   <div class="column" *ngFor="let column of data">
     <p>{{column.label}}</p>
-    <flower [bottom]=flowerMap[column.value]></flower>
+    <flower [bottom]=getHeight(column.value)></flower>
     <pipe width=90 bottom=-700></pipe>
   </div>
 </div>

@@ -89,7 +89,7 @@ export class DistanceComponent implements OnInit {
     let component = factory.create(injector);
 
     // Inputs arent being added above - this line will add - not sure why input provider isnt working
-    Object.keys(data.inputs).forEach(input => component.instance[input] = data.inputs[input])
+    Object.keys(data.inputs).map(input => component.instance[input] = data.inputs[input])
 
     // We insert the component into the dom container
     this.dynamicComponentContainer.insert(component.hostView);

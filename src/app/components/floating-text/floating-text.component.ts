@@ -10,7 +10,7 @@ export class FloatingTextComponent implements OnInit {
   position = {x: 0, y:64}
 
   @Input() public left: number;
-  @Input() public top: number;
+  @Input() public bottom: number;
   @Input() public text: string;
   @Input() public design: string = 'transparent';
 
@@ -18,7 +18,7 @@ export class FloatingTextComponent implements OnInit {
 
   ngOnInit() {
     this.position.x = this.left;
-    this.position.y = this.top;
+    this.position.y = this.bottom;
   }
 
 
