@@ -33,7 +33,6 @@ export class VerticalBarChartComponent implements OnInit {
       .subscribe( position => {
           if ((this.left * 1) + (290 * 1) < position - this.elRef.nativeElement.parentElement.offsetLeft) {
             this.onScreen = true;
-            console.log('hi');
           }
         }
       )
