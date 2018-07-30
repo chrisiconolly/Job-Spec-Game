@@ -24,3 +24,109 @@
   height: 320px;
   position: absolute;
 }
+
+.signpost { /* our rectangle */
+  width:500px;
+  height:200px;
+  background-color: #cc5a28;
+  padding: 0px 10px;
+  border-top: 3px solid #ecb391;
+  border-bottom: 3px solid #000000;
+  -webkit-transform: rotateZ(-10deg);
+    -moz-transform: rotateZ(-10deg);
+    -o-transform: rotateZ(-10deg);
+    -ms-transform: rotateZ(-10deg);
+    transform: rotateZ(-10deg);
+  z-index: 2;
+}
+
+.signpost:after { /*  our pseudo-element */
+  content:"";/* required */
+  position: absolute; /* takes the 'cap' out off flow */
+  top:0; /* stick it to top edge of the sign */
+  left:100%; /* push it way overto the right*/
+  height:0; /* we're doing this with borders remember */
+  width:0;
+  border-width: 100px;
+  border-style:solid;
+  border-color:#cc5a28; /* same as bg of our rectangle */
+  /* now we make some of theborders disappear*/
+  border-top-color:transparent;
+  border-bottom-color:transparent;
+  border-right-color:transparent;
+}
+
+
+.signpost:before { /*  our pseudo-element */
+  content:"";/* required */
+  position: absolute; /* takes the 'cap' out off flow */
+  height: 100px;
+  width: 20px;
+  background-color: brown;
+  top: 203px;
+  left: 274px;
+  z-index: 1;
+  -webkit-transform: rotateZ(10deg);
+    -moz-transform: rotateZ(10deg);
+    -o-transform: rotateZ(10deg);
+    -ms-transform: rotateZ(10deg);
+    transform: rotateZ(10deg);
+
+}
+
+.signpost.spin {
+  -moz-animation: spinHorizontal .1s infinite linear;
+  -o-animation: spinHorizontal .1s infinite linear;
+  -webkit-animation: spinHorizontal .1s infinite linear;
+  animation: spinHorizontal 0.3s infinite ease-out;
+}
+
+@-moz-keyframes spinHorizontal {
+  0% {
+    -moz-transform: rotateY(0deg) rotateZ(-10deg);
+  }
+
+  100% {
+      -moz-transform: rotateY(360deg) rotateZ(-10deg);
+  }
+}
+
+@keyframes spinHorizontal {
+  0% {
+        transform: rotateY(0deg) rotateZ(-10deg);
+  }
+  50% {
+        transform: rotateY(0deg) rotateZ(20deg);
+  }
+  100% {
+      transform: rotateY(0deg) rotateZ(-10deg);
+  }
+}
+
+
+@-ms-keyframes spinHorizontal {
+0% {
+    -ms-transform: rotateY(0deg) rotateZ(-10deg);
+}
+  100% {
+      -ms-transform: rotateY(360deg) rotateZ(-10deg);
+  }
+}
+
+@-o-keyframes spinHorizontal {
+0% {
+    -o-transform: rotateY(0deg) rotateZ(-10deg);
+}
+100% {
+      -o-transform: rotateY(360deg) rotateZ(-10deg);
+}
+}
+
+@-webkit-keyframes spinHorizontal {
+0% {
+    -webkit-transform: rotateY(0deg) rotateZ(-10deg);
+}
+100% {
+      -webkit-transform: rotateY(360deg) rotateZ(-10deg);
+}
+}

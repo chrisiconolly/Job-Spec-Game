@@ -21,14 +21,4 @@ export class AppComponent {
   constructor(private http: Http, private dataRetrievalService: DataRetrievalService) {
     dataRetrievalService.setLevel();
   }
-
-  public getJSON(): Observable<any> {
-    return this.http.get("/assets/levels/senior-software-engineer.json")
-      .map((res: any) => {
-        const response = res.json();
-        this.role = response.role;
-        this.data = response;
-      });
-
-  }
 }
