@@ -93,27 +93,27 @@
       "inputs": {
         "left": 5050,
         "bottom": 200,
-        "title": "Desired Skills",
+        "title": "Your Responsibilites",
         "data": [
           {
-            "label": ".NET / .NETCore",
+            "label": "Developing new features",
             "value": "4"
           },
           {
-            "label": "Distributed System Design",
+            "label": "System operation",
+            "value": "3"
+          },
+          {
+            "label": "Writing tests",
             "value": "4"
           },
           {
-            "label": "Asynchronous Programming",
-            "value": "4"
+            "label": "Whiteboarding",
+            "value": "2"
           },
           {
-            "label": "Test automation",
-            "value": "4"
-          },
-          {
-            "label": "Agile Experience",
-            "value": "4"
+            "label": "Improving CI pipelines",
+            "value": "3"
           }
         ]
       }

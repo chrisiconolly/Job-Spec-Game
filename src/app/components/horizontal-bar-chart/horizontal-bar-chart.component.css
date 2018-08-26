@@ -1,6 +1,6 @@
 .horizontal-bar-chart {
   position: absolute;
-  min-width: 100px;
+  min-width: 600px;
   min-height: 100px;
 }
 
@@ -16,14 +16,34 @@
   width: 68px;
   margin-right: 10px;
   background-image: url("/assets/bullet.svg");
+  background-repeat: no-repeat;
+  transition:all 0.3s ease;
+  -webkit-transform: scale(0);
+        -ms-transform: scale(0);
+        transform: scale(0);
 }
 
-p.label {
+.show .bullet {
+  -webkit-transform: scale(1);
+        -ms-transform: scale(1);
+        transform: scale(1);
+}
+
+.label {
   float: left;
   display: block;
-  width: 100px;
+  width: 130px;
   text-align: right;
+  height: 56px;
+  padding: 0;
+  margin: 0;
   margin-right: 30px;
+}
+
+.label p {
+  vertical-align: middle;
+  margin: 0;
+  padding: 0;
 }
 
 h3 {
