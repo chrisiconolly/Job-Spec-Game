@@ -1,5 +1,6 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, ElementRef } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
+import { CharPositionOnScreenService } from '../../services/char-position-on-screen/char-position-on-screen.service';
 
 @Component({
   selector: 'video-box',
@@ -17,7 +18,7 @@ export class VideoBoxComponent implements OnInit {
   @Input() public bottom: number;
   @Input() public youTubeId: string;
 
-  constructor(public sanitizer: DomSanitizer) {}
+  constructor(public sanitizer: DomSanitizer, public elRef: ElementRef, public charPositionOnScreenService: CharPositionOnScreenService) {}
 
   getIframe = () => {
     this.iframe = "clicked";
@@ -28,5 +29,13 @@ export class VideoBoxComponent implements OnInit {
     this.position.x = this.left;
     this.position.y = this.bottom ? this.bottom : 64;
     this.thumbnail = "https://img.youtube.com/vi/" + this.youTubeId + "/sddefault.jpg";
+
+    this.charPositionOnScreenService.charXPosition$
+      .subscribe( position => {
+          if ((this.left * 1) + (290 * 1) < position - this.elRef.nativeElement.parentElement.offsetLeft) {
+            this.getIframe();
+          }
+        }
+      )
   }
 }
