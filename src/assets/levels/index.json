@@ -1,0 +1,73 @@
+{
+  "role": "Choose below",
+  "background": [
+    {
+      "type": "level-selector",
+      "inputs": {
+        "levels": [
+          {
+            "name": "Senior Software Engineer (.NET / .NETCore)",
+            "path": "senior-software-engineer"
+          },
+          {
+            "name": "Software Engineer (.NET / .NETCore)",
+            "path": "software-engineer"
+          }
+        ]
+      }
+    },
+    {
+      "type": "bush",
+      "inputs": {
+        "left": 300,
+        "bottom": 64,
+        "size": "large"
+      }
+    },
+    {
+      "type": "bush",
+      "inputs": {
+        "left": 700,
+        "bottom": 64,
+        "size": "small"
+      }
+    }
+  ],
+  "distance": [
+    {
+      "type": "shard",
+      "inputs": {
+        "left": 1200
+      }
+    },
+    {
+      "type": "bush",
+      "inputs": {
+        "left": 1200,
+        "bottom": -30,
+        "size": "larger"
+      }
+    },
+    {
+      "type": "cloud",
+      "inputs": {
+        "left": 800,
+        "top": 80
+      }
+    },
+    {
+      "type": "cloud",
+      "inputs": {
+        "left": 600,
+        "top": 60
+      }
+    },
+    {
+      "type": "cloud",
+      "inputs": {
+        "left": 1300,
+        "top": 90
+      }
+    }
+  ]
+}

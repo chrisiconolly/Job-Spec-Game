@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, ViewContainerRef, ViewChild, ReflectiveInjector, ComponentFactoryResolver } from '@angular/core';
+import { Component, OnInit, OnDestroy, ViewContainerRef, ViewChild, ReflectiveInjector, ComponentFactoryResolver } from '@angular/core';
 import { fromEvent } from 'rxjs/observable/fromEvent';
 import { merge } from 'rxjs/observable/merge';
 import { Observable, Scheduler } from 'rxjs/Rx';
@@ -19,7 +19,7 @@ import { ShardComponent } from '../shard/shard.component';
   entryComponents: [BushComponent, CloudComponent, LondonBridgeComponent, ShardComponent],
 
 })
-export class DistanceComponent implements OnInit {
+export class DistanceComponent implements OnInit, OnDestroy {
 
   position = { x: -100, y: 0 };
   speed = 150;
@@ -58,6 +58,11 @@ export class DistanceComponent implements OnInit {
 
   @ViewChild('dynamicComponentContainer', { read: ViewContainerRef }) dynamicComponentContainer: ViewContainerRef;
 
+  ngOnDestroy() {
+    this.currentComponent = null;
+    this.dynamicComponentContainer.clear();
+  }
+
   ngOnInit() {
     // Draw Distance
     this.levelData$.subscribe((res) => this.drawDistance(res))
@@ -71,13 +76,13 @@ export class DistanceComponent implements OnInit {
       return;
     }
     this.currentComponent = null;
-    levelData.distance.map((component) => {this.createComponent(component)});
+    levelData.distance.map((component) => { this.createComponent(component) });
 
   }
 
-  private createComponent(data: {type: any, inputs: any }){
+  private createComponent(data: { type: any, inputs: any }) {
     // Inputs need to be in the following format to be resolved properly
-    let inputProviders = Object.keys(data.inputs).map((inputName) => {return {provide: inputName, useValue: data.inputs[inputName]};});
+    let inputProviders = Object.keys(data.inputs).map((inputName) => { return { provide: inputName, useValue: data.inputs[inputName] }; });
     let resolvedInputs = ReflectiveInjector.resolve(inputProviders);
     // We create an injector out of the data we want to pass down and this components injector
     let injector = ReflectiveInjector.fromResolvedProviders(resolvedInputs, this.dynamicComponentContainer.parentInjector);

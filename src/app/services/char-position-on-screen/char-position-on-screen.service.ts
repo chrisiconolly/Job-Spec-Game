@@ -33,5 +33,6 @@ export class CharPositionOnScreenService {
   }
 
   setGameCompleted = () => this.gameCompleted$.next(true);
+  resetGame = () => this.gameCompleted$.next(false);
 
 }

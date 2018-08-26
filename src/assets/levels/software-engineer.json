@@ -1,11 +1,11 @@
 {
-  "role": "Senior Software Engineer",
+  "role": "Software Engineer",
   "background": [
     {
       "type": "title-card",
       "inputs": {
         "left": 400,
-        "role": "Senior Software Engineer"
+        "role": "Software Engineer"
       }
     },
     {
@@ -83,9 +83,9 @@
       "type": "floating-text",
       "inputs": {
         "left": 4000,
-        "bottom": 264,
-        "design": "block-topbottom",
-        "text": "<h3>About us:</h3><p>We are a pioneering international FinTech company which is disrupting the traditional consumer lending space by providing solutions for “underserved” customers. Headquartered in London and backed by leading global investors, we employ over 500 people in four offices around the globe. </p><p>Keep on going to see our benefits and to watch a video about what it's like to work at Wonga.</p>"
+        "bottom": 214,
+        "design": "block-border",
+        "text": "<h3>About us:</h3><p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries </p><p> Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries</p>"
       }
     },
     {

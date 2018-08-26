@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, ViewChild, ViewContainerRef, ReflectiveInjector, ComponentFactoryResolver } from '@angular/core';
+import { Component, OnInit, OnDestroy, ViewChild, ViewContainerRef, ReflectiveInjector, ComponentFactoryResolver } from '@angular/core';
 import { fromEvent } from 'rxjs/observable/fromEvent';
 import { merge } from 'rxjs/observable/merge';
 import { Observable, Scheduler } from 'rxjs/Rx';
@@ -8,6 +8,8 @@ import { CharPositionOnScreenService } from '../../services/char-position-on-scr
 import { DataRetrievalService, levelData } from '../../services/data-retrieval/data-retrieval.service';
 
 import { BushComponent } from '../bush/bush.component';
+import { TitleCardComponent } from '../title-card/title-card.component';
+import { LevelSelectorComponent } from '../level-selector/level-selector.component';
 import { FloatingTextComponent } from '../floating-text/floating-text.component'
 import { HorizontalBarChartComponent } from '../horizontal-bar-chart/horizontal-bar-chart.component';
 import { VerticalBarChartComponent } from '../vertical-bar-chart/vertical-bar-chart.component';
@@ -18,9 +20,9 @@ import { VideoBoxComponent } from '../video-box/video-box.component';
   selector: 'background',
   templateUrl: './background.component.html',
   styleUrls: ['./background.component.css'],
-  entryComponents: [BushComponent, FloatingTextComponent, HorizontalBarChartComponent, VerticalBarChartComponent, LevelEndComponent, VideoBoxComponent]
+  entryComponents: [BushComponent, TitleCardComponent, LevelSelectorComponent, FloatingTextComponent, HorizontalBarChartComponent, VerticalBarChartComponent, LevelEndComponent, VideoBoxComponent]
 })
-export class BackgroundComponent implements OnInit {
+export class BackgroundComponent implements OnInit, OnDestroy {
 
   private position = { x: -100, y: 0 };
   private speed = 200;
@@ -28,6 +30,8 @@ export class BackgroundComponent implements OnInit {
   private levelData: levelData;
   private gameCompleted = false;
   private componentMap = {
+    "title-card": TitleCardComponent,
+    "level-selector": LevelSelectorComponent,
     "bush": BushComponent,
     "floating-text": FloatingTextComponent,
     "horizontal-bar-chart": HorizontalBarChartComponent,
@@ -50,6 +54,11 @@ export class BackgroundComponent implements OnInit {
 
   @ViewChild('dynamicComponentContainer', { read: ViewContainerRef }) dynamicComponentContainer: ViewContainerRef;
 
+  ngOnDestroy() {
+    this.currentComponent = null;
+    this.dynamicComponentContainer.clear();
+  }
+
   ngOnInit() {
     // Draw Distance
     this.dataRetrievalService.levelData$.subscribe((res) => {
@@ -66,13 +75,13 @@ export class BackgroundComponent implements OnInit {
       return;
     }
     this.currentComponent = null;
-    levelData.background.map((component) => {this.createComponent(component)});
+    levelData.background.map((component) => { this.createComponent(component) });
 
   }
 
-  private createComponent(data: {type: any, inputs: any }){
+  private createComponent(data: { type: any, inputs: any }) {
     // Inputs need to be in the following format to be resolved properly
-    let inputProviders = Object.keys(data.inputs).map((inputName) => {return {provide: inputName, useValue: data.inputs[inputName]};});
+    let inputProviders = Object.keys(data.inputs).map((inputName) => { return { provide: inputName, useValue: data.inputs[inputName] }; });
     let resolvedInputs = ReflectiveInjector.resolve(inputProviders);
     // We create an injector out of the data we want to pass down and this components injector
     let injector = ReflectiveInjector.fromResolvedProviders(resolvedInputs, this.dynamicComponentContainer.parentInjector);

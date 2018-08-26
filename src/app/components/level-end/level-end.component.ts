@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, ElementRef } from '@angular/core';
-import { CharPositionOnScreenService } from '../../services/char-position-on-screen/char-position-on-screen.service'
+import { CharPositionOnScreenService } from '../../services/char-position-on-screen/char-position-on-screen.service';
 
 @Component({
   selector: 'level-end',
@@ -13,7 +13,7 @@ export class LevelEndComponent implements OnInit {
 
   @Input() public left: number;
 
-  constructor(public elRef: ElementRef, public charPositionOnScreenService: CharPositionOnScreenService) { }
+  constructor(private elRef: ElementRef, private charPositionOnScreenService: CharPositionOnScreenService) { }
 
   ngOnInit() {
     this.position.x = this.left;

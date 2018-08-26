@@ -1,22 +1,14 @@
+// Angular Modules
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpModule } from '@angular/http';
 import { HttpClientModule } from '@angular/common/http';
+import { RouterModule, Routes } from '@angular/router';
 
 // Components
 import { AppComponent } from './app.component';
 import { CharacterComponent } from './components/character/character.component';
 import { BackgroundComponent } from './components/background/background.component';
-
-// Services
-import { LerpService } from './services/lerp/lerp.service';
-import { ScreenSizeService } from './services/screen-size/screen-size.service';
-import { DataRetrievalService } from './services/data-retrieval/data-retrieval.service';
-import { CharPositionOnScreenService } from './services/char-position-on-screen/char-position-on-screen.service';
-
-// Prototype Manipulation
-import 'rxjs/add/operator/filter'
-import 'rxjs/add/operator/map';
 import { TitleCardComponent } from './components/title-card/title-card.component';
 import { BushComponent } from './components/bush/bush.component';
 import { DistanceComponent } from './components/distance/distance.component';
@@ -28,12 +20,49 @@ import { VerticalBarChartComponent } from './components/vertical-bar-chart/verti
 import { HorizontalBarChartComponent } from './components/horizontal-bar-chart/horizontal-bar-chart.component';
 import { PipeComponent } from './components/pipe/pipe.component';
 import { FlowerComponent } from './components/flower/flower.component'
-
-import { TimesPipe } from './pipes/times-pipe';
 import { VideoBoxComponent } from './components/video-box/video-box.component';
 import { ScoreBarComponent } from './components/score-bar/score-bar.component';
 import { LevelEndComponent } from './components/level-end/level-end.component'
 
+// Services
+import { LerpService } from './services/lerp/lerp.service';
+import { ScreenSizeService } from './services/screen-size/screen-size.service';
+import { DataRetrievalService } from './services/data-retrieval/data-retrieval.service';
+import { CharPositionOnScreenService } from './services/char-position-on-screen/char-position-on-screen.service';
+
+// Prototype Manipulation
+import 'rxjs/add/operator/filter'
+import 'rxjs/add/operator/map';
+
+// Pipes
+import { TimesPipe } from './pipes/times-pipe';
+import { LevelComponent } from './components/level/level.component';
+import { LevelSelectorComponent } from './components/level-selector/level-selector.component';
+
+
+// Route definition
+const appRoutes: Routes = [
+  {
+    path: '',
+    component: LevelComponent,
+    data: { "data": "index.json"},
+  },
+  {
+    path: 'senior-software-engineer',
+    component: LevelComponent,
+    data: { "data": "senior-software-engineer.json"},
+  },
+  {
+    path: 'software-engineer',
+    component: LevelComponent,
+    data: { "data": "software-engineer.json"},
+  },
+  {
+    path: '**',
+    redirectTo: '/',
+    pathMatch: 'full'
+  }
+];
 
 @NgModule({
   declarations: [
@@ -54,12 +83,17 @@ import { LevelEndComponent } from './components/level-end/level-end.component'
     TimesPipe,
     VideoBoxComponent,
     ScoreBarComponent,
-    LevelEndComponent
+    LevelEndComponent,
+    LevelComponent,
+    LevelSelectorComponent
   ],
   imports: [
     BrowserModule,
     HttpModule,
-    HttpClientModule
+    HttpClientModule,
+    RouterModule.forRoot(
+      appRoutes
+    )
   ],
   providers: [
     LerpService,

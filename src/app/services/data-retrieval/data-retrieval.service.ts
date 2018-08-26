@@ -13,8 +13,8 @@ export class DataRetrievalService {
     this.levelData$ = new BehaviorSubject(levelData);
   }
 
-  public setLevel = () => {
-    return this.http.get("/assets/levels/senior-software-engineer.json")
+  public setLevel = (path) => {
+    return this.http.get("/assets/levels/" + path)
       .map((res) => res.json())
       .subscribe((res) => this.levelData$.next(res))
   }

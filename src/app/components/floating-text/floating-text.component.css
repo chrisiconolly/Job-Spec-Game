@@ -6,6 +6,7 @@
 
 .block-topbottom {
   background-color: #008fd5;
+  width: 680px;
 }
 
 .block-topbottom:before,
@@ -13,8 +14,9 @@
   content: "";
   display: block;
   height: 64px;
-  width: 512px;
   background-image: url('/assets/block.svg');
+  width: 700px;
+  margin-left: -10px;
 }
 
 .block-border {
